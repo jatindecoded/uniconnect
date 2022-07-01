@@ -59,12 +59,13 @@ function ImageUpload({ username }) {
 
     return (
         <div className="imageupload">
+            <h4>Upload an Image to the University Portal</h4>
             {/* I want to have.... */}
             {/* Caption Input */}
             {/* File Picker */}
             {/* Post Button */}
 
-            <progress value={progress} max="100" />
+            <progress value={progress} max="100" className='imageupload__progress' />
             <input type="text" placeholder='Enter a Caption...' onChange={(e) => setCaption(e.target.value)} value={caption} />
             <input type="file" onChange={handleChange} />
             <Button onClick={handleUpload}>

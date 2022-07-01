@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
+import logo from './stockimages/unilogo.png';
 import './App.css';
 import Post from "./Post";
 import { db, auth } from "./firebase";
@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import { Button, Input } from '@material-ui/core';
 import ImageUpload from './ImageUpload';
-import InstagramEmbed from "react-instagram-embed";
+// import InstagramEmbed from "react-instagram-embed";
 
 
 function rand() {
@@ -30,9 +30,11 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     width: 400,
     backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
+    // border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+    borderRadius: "20px",
+    // border-radius: 20px,
   },
 }));
 
@@ -142,10 +144,10 @@ function App() {
         open={open}
         onClose={() => setOpen(false)}
       >
-        <div style={modalStyle} className={classes.paper}>
+        <div style={modalStyle} className={classes.paper} >
           <form className="app__signup" >
             <center>
-              <img className="app__headerImage" src="https://www.uniconnect.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="" />
+            <div className="headimgout"><img className="app__headerImage" src={logo} alt=""></img></div>
             </center>
             <Input type="text" onChange={(e) => setUsername(e.target.value)} value={username} placeholder="username" />
             <Input type="text" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="email" />
@@ -162,7 +164,7 @@ function App() {
         <div style={modalStyle} className={classes.paper}>
           <form className="app__signup" >
             <center>
-              <img className="app__headerImage" src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="" />
+            <div className="headimgout"><img className="app__headerImage" src={logo} alt=""></img></div>
             </center>
             <Input type="text" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="email" />
             <Input type="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="password" />
@@ -179,15 +181,21 @@ function App() {
 
 
       <div className="app__header">
-        <img className="app__headerImage" src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt=""></img>
 
-        {user ? (
-          <Button onClick={() => auth.signOut()}>Log Out</Button>
-        ) : <div className="app__logininContainer">
-            <Button onClick={() => setOpen(true)}>Sign Up</Button>
-            <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
-          </div>
-        }
+        {/* <div className="insidehead"> */}
+            <div className="headimgout"><img className="app__headerImage" src={logo} alt=""></img></div>
+            <h3 className='sitename'>The UniConnect</h3>
+            {user ? (
+               <div className="app__logininContainer">
+              <Button onClick={() => auth.signOut()} className='topbutton'>Log Out</Button>
+              </div>
+            ) : <div className="app__logininContainer">
+                <Button onClick={() => setOpen(true)} className='topbutton'>Sign Up</Button>
+                <Button onClick={() => setOpenSignIn(true)} className='topbutton'>Sign In</Button>
+              </div>
+            }
+
+        {/* </div> */}
 
 
       </div>
@@ -205,20 +213,9 @@ function App() {
           }
 
         </div>
-        <div className="app__postsRight">
-          <InstagramEmbed
-            url='https://www.instagram.com/p/CCf9aDsghRf/'
-            maxWidth={320}
-            hideCaption={false}
-            containerTagName='div'
-            protocol=''
-            injectScript
-            onLoading={() => { }}
-            onSuccess={() => { }}
-            onAfterRender={() => { }}
-            onFailure={() => { }}
-          />
-        </div>
+       
+       
+        
       </div>
 
 

@@ -55,15 +55,24 @@ function Post({ postId, user, username, caption, imageUrl }) {
                     alt={username}
                     src="/static/images/avatar/1.jpg"
                 />
-                <h3 >{username}</h3>
+                <div className="post_header_in">
+                    <h3 >{username}</h3>
+                    <small className='smalltext'>Student at Xavier's</small>
+
+                </div>
             </div>
-            <img className="post__image" src={imageUrl} alt=""></img>
+            <div className="image_out">
+              <img className="post__image" src={imageUrl} alt=""></img>
+
+            </div>
             <h4 className="post__text"><strong>{username} </strong> {caption}</h4>
 
 
             <div className="post__comments">
+            <strong className='discuss'><i>Discussion Forum -</i></strong>
                 {comments.map((comment) => (
-                    <p>
+                    <p className='commentind'>
+                        
                         <strong>{comment.username}</strong> {comment.text}
                     </p>
                 ))}
